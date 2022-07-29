@@ -33,6 +33,7 @@ export default defineComponent({
       gotoList: [
         {title: '百度',href: '/baidu'},
         {title: 'Golang(需翻墙)',href: '/golang'},
+        {title: 'Rust',href: '/rust'},
       ]
     }
   }

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import GoLang from '../views/GoLang.vue'
 import Baidu from '../views/BaiduPage.vue'
+import Rust from '../views/RustPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -26,6 +27,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/golang',
     name: 'golang',
     component: GoLang
+  },
+  {
+    path: '/rust',
+    name: 'rust',
+    component: Rust
   },
 ]
 
