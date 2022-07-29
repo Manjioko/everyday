@@ -20,6 +20,8 @@
     </nav>
   </header>
   <main>
+
+    <!-- 开始rust -->
     <section class="big-rust">
       <article class="br-contains">
         <div class="br-contains-layout">
@@ -34,6 +36,8 @@
         </div>
       </article>
     </section>
+
+    <!-- 选择rust -->
     <section class="why-try">
       <article class="why-try-contains">
         <div class="why-try-rust">
@@ -46,6 +50,30 @@
                 {{item.contents}}
               </p>
           </article>
+        </div>
+      </article>
+    </section>
+
+    <!-- 构建应用 -->
+    <section class="build">
+      <article class="build-contains">
+        <div class="build-app">
+          <p class="build-app-title">用rust构建应用</p>
+          <p class="build-app-subcontents">2018 年，Rust 社区决定在几个不同的领域中提升编程体验
+            （见 <a href="/ruts">2018 年路线图</a> ）。您可以找到许多高质量的 crates 和一些精彩的入门指南。
+          </p>
+        </div>
+        <div class="build-list">
+          <div class="build-list-box" v-for="(item,index) in buildBox" :key="index">
+            <div class="build-list-logo">
+              <img :src="item.url" alt="" class="build-list-img">
+            </div>
+            <h2 class="build-list-h2">{{item.title}}</h2>
+            <p class="build-list-subcontents">
+              {{item.sub}}
+            </p>
+            <a href="/rust" class="build-list-a">{{item.btn}}</a>
+          </div>
         </div>
       </article>
     </section>
@@ -80,6 +108,33 @@ export default defineComponent({
           以及自动格式化代码等等。`
         },
       ],
+      buildBox: [
+        {
+          url: 'https://www.rust-lang.org/static/images/cli.svg',
+          title: '命令行',
+          sub: '使用 Rust 强大的生态系统快速实现命令行工具。Rust 可助您放心维护，轻松分发应用程序',
+          btn: '构建工具'
+        },
+        {
+          url: 'https://www.rust-lang.org/static/images/webassembly.svg',
+          title: 'WebAssembly',
+          sub: '使用 Rust 来逐个增强您的 JavaScript 模块。发布到 npm，使用 webpack 打包，即可感受到惊人的速度提升',
+          btn: '编写Web应用'
+        },
+        {
+          url: 'https://www.rust-lang.org/static/images/networking.svg',
+          title: '网络',
+          sub: '可预见的性能，极小的资源占用，坚如磐石的可靠性。Rust 极其适合网络服务。',
+          btn: '运作于服务器'
+        },
+        {
+          url: 'https://www.rust-lang.org/static/images/embedded.svg',
+          title: '嵌入式',
+          sub: '针对资源匮乏的设备？需要底层控制而又不失上层抽象的便利？Rust 包您满意！',
+          btn: '开启嵌入式'
+        },
+        
+      ]
     }
   }
 });
@@ -120,7 +175,7 @@ nav.rust-nav {
 }
 
 .rust-nav-select {
-    padding: 2rem 0;
+    padding: 2.5rem 0;
 }
 
 #nav-select {
@@ -232,6 +287,78 @@ nav.rust-nav {
     margin-top: 0;
     margin-bottom: 30px;
     padding-right: 3rem;
+}
+
+.build {
+    background: #2e2459;
+    color: white;
+}
+
+.build-contains {
+    padding: 30px 0 60px 0;
+    color: white;
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.build-app-title {
+    margin: 0;
+    padding-top: 10px;
+    margin-bottom: 30px;
+    padding-left: 10px;
+    font-size: 2.25rem;
+    font-weight: 600;
+    width: 21rem;
+    letter-spacing: 2px;
+    border-bottom: 0.875rem solid #a72145;
+}
+
+.build-app-subcontents {
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    & > a {
+      color: white;
+    }
+}
+
+.build-list {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+
+.build-list-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.build-list-img {
+    max-width: 6rem;
+}
+
+.build-list-h2 {
+    padding-top: 1rem;
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.build-list-subcontents {
+    line-height: 2rem;
+    margin-top: 0;
+    margin-bottom: 30px;
+    padding: 0 1rem;
+    flex-grow: 1;
+}
+
+.build-list-a {
+    background: #a72145;
+    text-decoration: none;
+    color: white;
+    width: 90%;
+    text-align: center;
+    padding: 0.8rem 0;
+    border-radius: 0.25rem;
 }
 
 </style>
