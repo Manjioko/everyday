@@ -149,7 +149,74 @@
         </div>
       </article>
     </section>
+
+
+    <!-- 感谢 -->
+    <section class="thank">
+      <article class="thank-contains">
+        <div class="use-rust-layout">
+          <p class="thank-title">感谢</p>
+          <p class="thank-cn">
+            如果没有个人、公司慷慨无私地奉献出时间、劳动和资源，Rust 将不会存在。我们非常感谢您的支持！
+          </p>
+        </div>
+
+        <div class="thank-list">
+          <div class="thank-box" v-for="(item,index) in thankBox" :key="index">
+            <h3 class="thank-h3">{{item.title}}</h3>
+            <p class="thank-sub">{{item.sub}}</p>
+            <a href="/rust" class="ju-a">{{item.btn}}</a>
+          </div>
+        </div>
+
+      </article>
+    </section>
   </main>
+
+  <footer class="footer">
+
+    <article class="footer-contains">
+      <div class="footer-help">
+        <h3 class="footer-help-h3">获得帮助！</h3>
+        <ul class="fh-ul">
+          <li class="fh-li" v-for="(item,index) in helpBox" :key="index">
+            <a href="/rust" class="fh-a">{{item}}</a>
+          </li>
+          <li class="fh-li-select">
+            <select name="NAV-SELECT" id="footer-select" aria-labelledby="select">
+              <option :value="item" v-for="(item,index) in navSelect" :key="index">{{item}}</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-police">
+        <h3 class="footer-help-h3">条款与政策</h3>
+        <ul class="fh-ul">
+          <li class="fh-li" v-for="(item,index) in policeBox" :key="index">
+            <a href="/rust" class="fh-a">{{item}}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <h3 class="footer-help-h3">社交</h3>
+        <a href="/rust" class="fs-a">
+          <img src="https://www.rust-lang.org/static/images/twitter.svg" alt="" class="fs-a-img" />
+        </a>
+        <a href="/rust" class="fs-a">
+          <img src="https://www.rust-lang.org/static/images/youtube.svg" alt="" class="fs-a-img" />
+        </a>
+        <a href="/rust" class="fs-a">
+          <img src="https://www.rust-lang.org/static/images/discord.svg" alt="" class="fs-a-img" />
+        </a>
+        <a href="/rust" class="fs-a">
+          <img src="https://www.rust-lang.org/static/images/github.svg" alt="" class="fs-a-img" />
+        </a>
+      </div>
+
+    </article>
+
+  </footer>
 </template>
 
 <script lang="ts">
@@ -218,7 +285,21 @@ export default defineComponent({
           sub: 'Rust 社区有专门的 YouTube 频道，内含大量的演示文稿和教程。',
           btn: '观看学习视频',
         },
-      ]
+      ],
+      thankBox: [
+        {
+          title: '个人',
+          sub: 'Rust 是一个社区项目，非常感谢社区为它所做的贡献。',
+          btn: '查看个人贡献者'
+        },
+        {
+          title: '团体赞助者',
+          sub: 'Rust 使用的基础设施来自于一些公司的捐赠。',
+          btn: '查看赞助者'
+        },
+      ],
+      helpBox: ['文档','Rust Forge (贡献者文档)','在用户论坛提问'],
+      policeBox: ['行为准则','许可证','商标政策和媒体指南','安全问题公示','隐私声明']
     }
   }
 });
@@ -445,7 +526,7 @@ nav.rust-nav {
     border-radius: 0.25rem;
 }
 
-.use-rust-cn {
+.use-rust-cn,.thank-cn {
   margin-top: 0;
   margin-bottom: 30px;
   font-size: 1.725rem;
@@ -502,6 +583,11 @@ nav.rust-nav {
   border-bottom: 0.875rem solid #ffc832;
   width: 24rem;
   
+}
+
+.thank-title {
+  @extend .use-rust-title;
+  width: 6rem;
 }
 
 .urba-layout {
@@ -577,10 +663,18 @@ nav.rust-nav {
     display: flex;
 }
 
+.thank-list {
+  @extend .ju-list;
+}
+
 .ju-box {
     display: flex;
     flex-direction: column;
     margin: 0 0.875rem;
+}
+
+.thank-box {
+  @extend .ju-box;
 }
 
 .ju-box-h3 {
@@ -588,10 +682,18 @@ nav.rust-nav {
     font-size: 1.6rem;
 }
 
+.thank-h3 {
+  @extend .ju-box-h3;
+}
+
 .ju-box-sub {
     margin-top: 0;
     margin-bottom: 30px;
     font-size: 1.12rem;
+}
+
+.thank-sub {
+  @extend .ju-box-sub;
 }
 
 .ju-a {
@@ -608,5 +710,62 @@ nav.rust-nav {
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
+}
+
+.thank-contains {
+  padding: 30px 0 60px 0;
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.footer {
+    padding: 30px 0;
+    background-color: #2a3439;
+    color: white;
+}
+
+.footer-contains {
+    width: 70rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.footer-help-h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1.6rem;
+}
+
+.fh-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.fh-li {
+    margin-bottom: 1rem;
+}
+
+#footer-select {
+    width: 10rem;
+    height: 1.3rem;
+    margin-bottom: 0;
+
+}
+
+.fh-li-select {
+  margin-bottom: 0;
+}
+
+.fh-a {
+    text-decoration: none;
+    color: #ffc832;
+}
+
+.fs-a-img {
+    width: 40px;
+    padding: 0 10px;
 }
 </style>
