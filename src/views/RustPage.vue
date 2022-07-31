@@ -77,6 +77,78 @@
         </div>
       </article>
     </section>
+
+    <section class="use-rust">
+      <article class="ur-contains">
+        <div class="use-rust-layout">
+          <p class="use-rust-title">生产环境中的 Rust</p>
+          <p class="use-rust-cn">
+            全世界已有数百家公司在生产环境中使用 Rust，以达到快速、跨平台、低资源占用的目的。
+            很多著名且受欢迎的软件，例如 Firefox、 Dropbox 和 Cloudflare 都在使用 Rust。
+            <strong>从初创公司到大型企业，从嵌入式设备到可扩展的 Web 服务，Rust 都完全合适。</strong>
+          </p>
+        </div>
+        <div class="ur-boast">
+          <div class="ur-boast-quote">
+            <blockquote class="ur-quote">
+              对 Rust 最大的赞美，就是它让我太无聊了。这太令人惊叹了！
+            </blockquote>
+            <p class="ur-author">
+              – Chris Dickinson，来自 npm 公司的工程师
+            </p>
+          </div>
+          <div class="ur-logo">
+            <img src="https://www.rust-lang.org/static/images/user-logos/npm.svg" alt="" class="ur-logo-img" />
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="ur-boast-again">
+          <div class="urba-layout">
+            <div class="ur-logo-agin">
+              <img src="https://www.rust-lang.org/static/images/user-logos/yelp.png" alt="" />
+            </div>
+            <div class="ur-boast-again">
+              <blockquote class="ur-quote-again">
+                文档、工具和社区都相当棒，足以帮助您顺利完成 Rust 项目！
+              </blockquote>
+              <p class="ur-author-again">
+                – Antonio Verardi，基础设施工程师
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <a href="/rust" class="ur-more">了解更多</a>
+
+      </article>
+    </section>
+
+    <section class="join-us">
+      <article class="join-us-contains">
+        <div class="join-us-layout">
+          <p class="join-us-title">加入社区</p>
+        </div>
+
+        <div class="ju-list">
+          <div class="ju-box" v-for="(item,index) in joinBox" :key="index">
+            <h3 class="ju-box-h3">{{item.title}}</h3>
+            <p class="ju-box-sub">{{item.sub}}</p>
+            <a href="/rust" class="ju-a">{{item.btn}}</a>
+          </div>
+        </div>
+
+        <div class="ju-code">
+          <h3 class="ju-box-h3">贡献代码</h3>
+          <p class="ju-box-sub">
+            Rust 是真正由社区驱动的项目。我们欢迎您的帮助，无论您是业余爱好者还是生产级用户，
+            也不管您是初来乍到的新手还是经验丰富的专家。让我们一起把 Rust 变得更好！
+          </p>
+          <a href="/rust" class="ju-a">阅读《贡献指南》</a>
+        </div>
+      </article>
+    </section>
   </main>
 </template>
 
@@ -134,6 +206,18 @@ export default defineComponent({
           btn: '开启嵌入式'
         },
         
+      ],
+      joinBox: [
+        {
+          title: '阅读',
+          sub: '我们热爱文档！查看在线书籍，以及重要的博客文章和用户指南。',
+          btn: '阅读学习资源',
+        },
+        {
+          title: '观看',
+          sub: 'Rust 社区有专门的 YouTube 频道，内含大量的演示文稿和教程。',
+          btn: '观看学习视频',
+        },
       ]
     }
   }
@@ -361,4 +445,168 @@ nav.rust-nav {
     border-radius: 0.25rem;
 }
 
+.use-rust-cn {
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 1.725rem;
+  font-weight: 400;
+}
+
+.ur-boast {
+    display: flex;
+}
+
+.ur-boast-quote {
+    flex: 1;
+}
+
+.ur-quote {
+    font-size: 1.7rem;
+    border-bottom: 1px dotted #2a3439;
+    position: relative;
+}
+
+.ur-author {
+    text-align: end;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.ur-quote::before {
+    content: "“";
+    color: #2a3439;
+    font-size: 4rem;
+    position: absolute;
+    left: -50px;
+    top: 20px;
+}
+
+.ur-logo {
+    width: 30%;
+    text-align: center;
+}
+
+.ur-logo-img {
+    width: 60%;
+    padding: 10px;
+}
+.ur-contains {
+  padding: 30px 0 60px 0;
+  // color: white;
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.use-rust-title {
+  @extend .build-app-title;
+  border-bottom: 0.875rem solid #ffc832;
+  width: 24rem;
+  
+}
+
+.urba-layout {
+  display: flex;
+}
+
+.ur-logo-agin {
+    width: 30%;
+    text-align: center;
+    & > img {
+      width: 60%;
+    }
+}
+
+.ur-quote-again {
+    font-size: 1.7rem;
+    border-bottom: 1px dotted #2a3439;
+    position: relative;
+}
+
+.ur-quote-again::before {
+  content: "“";
+  color: #2a3439;
+  font-size: 4rem;
+  position: absolute;
+  left: -50px;
+  top: 20px;
+}
+
+.ur-author-again {
+    text-align: end;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.ur-more {
+    width: 100%;
+    display: block;
+    text-align: center;
+    background: #ffc832;
+    padding: 8px 0;
+    text-decoration: none;
+    color: #2a3439;
+    font-weight: bold;
+    margin-top: 30px;
+    border-radius: 0.25rem;
+}
+
+.join-us {
+    background: #a72145;
+}
+
+.join-us-contains {
+    padding: 30px 0 60px 0;
+    max-width: 70rem;
+    margin: 0 auto;
+    color: white;
+}
+
+.join-us-title {
+    margin: 0;
+    padding-top: 10px;
+    margin-bottom: 30px;
+    padding-left: 10px;
+    font-size: 2.25rem;
+    font-weight: 600;
+    width: 11rem;
+    letter-spacing: 2px;
+    border-bottom: 0.875rem solid #2e2459;
+}
+
+.ju-list {
+    display: flex;
+}
+
+.ju-box {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0.875rem;
+}
+
+.ju-box-h3 {
+    margin-top: 0;
+    font-size: 1.6rem;
+}
+
+.ju-box-sub {
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 1.12rem;
+}
+
+.ju-a {
+  text-decoration: none;
+  color: white;
+  background: #2e2459;
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 0.25rem;
+}
+
+.ju-code {
+    margin: 0 0.875rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+}
 </style>
