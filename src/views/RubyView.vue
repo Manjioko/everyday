@@ -96,7 +96,7 @@
                         <a href="" class="rvr-try-a">从其它语言转到Ruby</a>
                     </div>
                     <div class="rvr-explore">
-                        <p class="rvr-explore-p"><strong>探索，</strong>新的世界</p>
+                        <p class="rvr-explore-p"><strong>探索</strong>新的世界</p>
                         <a href="" class="rvr-explore-a">文档</a>
                         <a href="" class="rvr-explore-a">学术研究</a>
                         <a href="" class="rvr-explore-a">代码库</a>
@@ -118,6 +118,24 @@
             </article>
         </section>
     </main>
+
+    <!-- 尾部 -->
+    <footer class="ruby-footer">
+        <article class="ruby-footer-contains">
+            <div class="rfc-nav">
+                <ul class="rfc-nav-ul">
+                    <li class="rfc-nav-li" v-for="(item, index) in footerNavBox" :key="index">
+                        <a href="" class="rfc-nav-a">{{item}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="rfc-lang">
+                <span>本站其他语言版本：</span>
+                <a href="" class="rfc-lang-list" v-for="(item, index) in langBox" :key="index">{{item}}</a>
+                <p class="rfc-lang-end"><a class="rfc-lang-end-a" href="">本站</a>由 Ruby 社区的成员共同维护。</p>
+            </div>
+        </article>
+    </footer>
 </template>
 
 <script lang="ts">
@@ -161,6 +179,13 @@ export default defineComponent({
                 title: 'Ruby 3.0.0 现已发布',
                 sub:'由 naruse 发表于 2020-12-25'
             },
+        ],
+        footerNavBox: [
+            '下载','文档','代码库','社区','新闻','安全','关于 Ruby'
+        ],
+        langBox: [ 
+            'Български,', 'Deutsch,', 'English,', 'Español,', 'Français,','Bahasa Indonesia,', 'Italiano,', 
+            '日本語,', '한국어,', 'polski,', 'Português,', 'Русский,', 'Türkçe,', 'Tiếng Việt,', '简体中文,', '繁體中文'
         ]
     }
   }
@@ -459,6 +484,50 @@ export default defineComponent({
     color: #cc342d;
     margin: 40px 0 5px;
     line-height: 24px;
+}
+
+.ruby-footer-contains {
+    max-width: 980px;
+    margin: 48px auto;
+}
+
+.rfc-nav {
+    background-color: #ebebe4;
+    padding: 0 14px;
+    border: 1px solid #ddd;
+}
+
+.rfc-nav-ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.rfc-nav-li {
+    padding: 8px 10px;
+}
+
+.rfc-nav-a {
+    color: #555;
+    font-size: 14px;
+}
+
+.rfc-lang {
+    background-color: #F6F6F3;
+    padding: 8px 24px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.rfc-lang-list {
+    color: #555;
+}
+
+.rfc-lang-end-a {
+    color: #555;
 }
 
 </style>
