@@ -4,6 +4,7 @@ import GoLang from '../views/GoLang.vue'
 import Baidu from '../views/BaiduPage.vue'
 import Rust from '../views/RustPage.vue'
 import Ruby from '../views/RubyView.vue'
+import VuePage from '../views/VuePage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -38,6 +39,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/ruby',
     name: 'ruby',
     component: Ruby
+  },
+  {
+    path: '/vue',
+    name: 'vue',
+    component: VuePage
   },
 ]
 

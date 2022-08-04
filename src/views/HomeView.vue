@@ -35,6 +35,7 @@ export default defineComponent({
         {title: 'Golang(需翻墙)',href: '/golang'},
         {title: 'Rust',href: '/rust'},
         {title: 'Ruby',href: '/ruby'},
+        {title: 'Vue',href: '/vue'},
       ]
     }
   }
