@@ -1,4 +1,6 @@
 <template>
+
+    <!-- 头部 -->
     <header class="vue-header">
         <section class="vue-header-tip">
             <p class="vht-p">
@@ -46,6 +48,57 @@
             </article>
         </section>
     </header>
+
+    <!-- 内容区 -->
+    <main>
+        <section class="frame">
+            <article class="frame-contains">
+                <div class="frame-logo">
+                    <img src="https://cn.vuejs.org/images/logo.svg" alt="" class="fl-img">
+                </div>
+                <div class="frame-script">
+                    <h1 class="frame-script-h1">渐进式<br/>JavaScript 框架</h1>
+                    <p class="frame-script-p">
+                        <a href="" class="frame-script-a-why">
+                            <img src="../assets/vue_why.svg" alt="" class="fsaw-img">
+                            why vue.js?
+                        </a>
+                        <a href="" class="frame-script-a-start">起步</a>
+                        <a href="" class="frame-script-a-github">
+                            <img src="../assets/github.svg" alt="" class="fsag-img">
+                            github
+                        </a>
+                    </p>
+                </div>
+            </article>
+        </section>
+
+        <!-- help -->
+        <section class="help">
+            <article class="help-contains">
+                <p class="help-title">特别赞助</p>
+                <div class="help-company">
+                    <a href="" class="hc-h">
+                        <img src="https://cn.vuejs.org/images/dcloud1.png" alt="" class="hc-h-img" />
+                    </a>
+                    <a href="" class="hc-x">
+                        <img src="https://sponsors.vuejs.org/images/xitujuejinjishushequ.png" alt="" class="hc-x-img" />
+                    </a>
+                </div>
+
+            </article>
+        </section>
+
+        <!-- descript -->
+        <section class="descript">
+            <article class="descript-contains">
+                <div class="descript-box" v-for="(item, index) in descriptBox" :key="index">
+                    <h3 class="db-title">{{item.title}}</h3>
+                    <p class="db-sub">{{item.sub}}</p>
+                </div>
+            </article>
+        </section>
+    </main>
 </template>
 
 <script lang="ts">
@@ -125,6 +178,12 @@ export default defineComponent({
                     child: null,
                     list:false
                 },
+            ],
+
+            descriptBox: [
+                {title: '易用',sub:'已经会了 HTML、CSS、JavaScript？即刻阅读指南开始构建应用！'},
+                {title: '灵活',sub:'不断繁荣的生态系统，可以在一个库和一套完整框架之间自如伸缩。'},
+                {title: '高效',sub:'20kB min+gzip 运行大小超快虚拟 DOM最省心的优化'},
             ]
         }
     }
@@ -287,5 +346,147 @@ export default defineComponent({
 .vhns-not-list-li > a {
     color: #354c63;
     text-decoration: none;
+}
+
+.fl-img {
+    width: 215px;
+    height: 215px;
+
+    float: right;
+    margin-right: 60px;
+}
+
+.frame-script-a-why {
+    background-color: #4fc08d;
+    padding: 0.75rem 2rem;
+    position: relative;
+    text-indent: 1.4rem;
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 2rem;
+    margin: 1rem 0;
+    letter-spacing: 0.1rem;
+}
+
+.fsaw-img {
+    width: 2rem;
+    position: absolute;
+    top: 0.35rem;
+    left: 0.4rem;
+}
+
+.frame-script-a-start {
+    padding: 0.75rem 2rem;
+    color: #42b983;
+    text-decoration: none;
+    border: 1px solid #4fc08d;
+    border-radius: 2rem;
+    box-sizing: border-box;
+    background-color: #fff;
+    display: inline-block;
+    min-width: 8rem;
+    text-align: center;
+    margin: 1rem 1%;
+}
+
+.frame-script-a-github {
+    background-color: #f6f6f6;
+    padding: 0.75rem 2rem;
+    position: relative;
+    letter-spacing: 0.1rem;
+    min-width: 8rem;
+    color: #4f5959;
+    border-radius: 2rem;
+    border-color: #f6f6f6;
+    font-size: 1.5rem;
+    text-decoration: none;
+    text-indent: 1.4rem;
+    display: inline-block;
+    margin: 1rem 0;
+}
+
+.fsag-img {
+    width: 2rem;
+    position: absolute;
+    top: 0.6rem;
+    left: 0.4rem;
+}
+
+.frame-logo {
+    display: inline-block;
+    width: 39%;
+    vertical-align: top;
+}
+
+.frame-script {
+    display: inline-block;
+    width: 61%;
+    vertical-align: top;
+}
+
+.frame-script-h1 {
+    margin: 0;
+    font-size: 3.2rem;
+    font-weight: 300;
+    color: #273849;
+}
+
+.frame-contains {
+    padding: 40px 40px 30px;
+}
+
+.help-contains {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.help-title {
+    margin: 0;
+    font-weight: 600;
+}
+
+.hc-h {
+    display: inline-block;
+    margin: 10px 15px 0;
+    vertical-align: middle;
+}
+
+.hc-h-img {
+    height: 70px;
+}
+
+.hc-x {
+    display: inline-block;
+    margin: 10px 15px 0;
+    vertical-align: middle;
+}
+
+.hc-x-img {
+    height: 55px;
+}
+
+.descript-contains {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.descript-box {
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.db-title {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #42b983;
+    padding: 0.5rem 0;
+}
+
+.db-sub {
+    color: #4f5959;
 }
 </style>
