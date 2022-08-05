@@ -251,6 +251,7 @@ export default defineComponent({
     margin: 0;
     padding: 0;
     margin-left: 1.5rem;
+    z-index: 1;
 }
 
 .vhnsl-a {
