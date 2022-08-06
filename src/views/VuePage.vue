@@ -16,17 +16,19 @@
                     <input type="text" class="vhn-search-input" />
                     <ul class="vhns-ul">
                         <li class="vhns-li" v-for="(item, index) in navBox" :key="index">
-                            <a href="" class="vhnsl-a" :class="{'vhnsl-a-not-child': (!item.child)}">{{ item.name }}</a>
+                            <a href="" class="vhnsl-a" :class="{ 'vhnsl-a-not-child': (!item.child) }">{{ item.name }}</a>
                             <!-- 黑色小三角 -->
                             <span class="vhnsl-t" v-show="item.child"></span>
                             <div class="vhns-child" v-show="item.child">
                                 <!-- 这部分是有二级菜单的 -->
                                 <div class="vhns-has-list" v-if="item.list">
-                                    <div class="vhns-child-box" v-for="(subItem,subIndex) in item.child" :key="subIndex">
-                                        <span class="vhns-child-box-title" v-show="subItem.list">{{subItem.name}}</span>
+                                    <div class="vhns-child-box" v-for="(subItem, subIndex) in item.child"
+                                        :key="subIndex">
+                                        <span class="vhns-child-box-title" v-show="subItem.list">{{ subItem.name }}</span>
                                         <ul class="vhns-child-ul">
-                                            <li class="vhns-child-li" v-for="(threeItem,threeIndex) in subItem.list" :key="threeIndex">
-                                                <a href="">{{threeItem}}</a>
+                                            <li class="vhns-child-li" v-for="(threeItem, threeIndex) in subItem.list"
+                                                :key="threeIndex">
+                                                <a href="">{{ threeItem }}</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -35,8 +37,9 @@
                                 <!-- 这部分只有一级菜单 -->
                                 <div class="vhns-not-list" v-if="!item.list">
                                     <ul class="vhns-not-list-ul">
-                                        <li class="vhns-not-list-li" v-for="(subItem,subIndex) in item.child" :key="subIndex">
-                                            <a href="" >{{subItem.name}}</a>
+                                        <li class="vhns-not-list-li" v-for="(subItem, subIndex) in item.child"
+                                            :key="subIndex">
+                                            <a href="">{{ subItem.name }}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -57,7 +60,7 @@
                     <img src="https://cn.vuejs.org/images/logo.svg" alt="" class="fl-img">
                 </div>
                 <div class="frame-script">
-                    <h1 class="frame-script-h1">渐进式<br/>JavaScript 框架</h1>
+                    <h1 class="frame-script-h1">渐进式<br />JavaScript 框架</h1>
                     <p class="frame-script-p">
                         <a href="" class="frame-script-a-why">
                             <img src="../assets/vue_why.svg" alt="" class="fsaw-img">
@@ -93,8 +96,22 @@
         <section class="descript">
             <article class="descript-contains">
                 <div class="descript-box" v-for="(item, index) in descriptBox" :key="index">
-                    <h3 class="db-title">{{item.title}}</h3>
-                    <p class="db-sub">{{item.sub}}</p>
+                    <h3 class="db-title">{{ item.title }}</h3>
+                    <p class="db-sub">{{ item.sub }}</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- 赞助商 -->
+        <section class="company" v-sc="cphandle" >
+            <article class="company-contains">
+                <div class="cc-all">
+                    <h3 class="cc-title">Patreon 赞助商</h3>
+                    <ul class="cc-ul">
+                        <li class="cc-li" v-for="(item,index) in cpBox" :key="index">
+                            <a href="" class="cc-a"><img :src="item" alt="" class="cc-img" :class="{'cc-gray-img':isGray}" /></a>
+                        </li>
+                    </ul>
                 </div>
             </article>
         </section>
@@ -102,13 +119,26 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, } from 'vue';
+import { defineComponent, ref, } from 'vue';
 
 export default defineComponent({
     name: 'VuePage',
 
 
     setup() {
+
+
+        // 赞助商变色
+        let isGray = ref(false)
+        function cphandle(e:Element) {
+            let top = e.getBoundingClientRect().top
+            if(top < 181) {
+                isGray.value = true
+            } else {
+                isGray.value = false
+            }
+
+        }
 
         return {
 
@@ -119,7 +149,7 @@ export default defineComponent({
                         { name: '文档', list: ['教程', 'API', '风格指南', '示例', 'Cookbook'] },
                         { name: '视频教程', list: ['Vue Mastery(英文)', 'Vue School(英文)', 'DCloud教程'] },
                     ],
-                    list:true,
+                    list: true,
                 },
                 {
                     name: '生态系统',
@@ -129,31 +159,31 @@ export default defineComponent({
                         { name: '核心插件', list: ['Vue Router', 'Vuex', 'Vue 服务端渲染'] },
                         { name: '信息', list: ['周刊', 'Roadmap', '活动', 'Twitter', '博客', '工作', 'DEV 社区'] }
                     ],
-                    list:true,
+                    list: true,
                 },
                 {
                     name: '团队',
                     child: null,
-                    list:false,
+                    list: false,
                 },
                 {
                     name: '资源列表',
                     child: [
-                        { name: '合作伙伴',list:null },
-                        { name: '主题',list:null },
-                        { name: 'Awesome Vue',list:null },
-                        { name: '浏览和 Vue 相关的包',list:null }
+                        { name: '合作伙伴', list: null },
+                        { name: '主题', list: null },
+                        { name: 'Awesome Vue', list: null },
+                        { name: '浏览和 Vue 相关的包', list: null }
                     ],
-                    list:false,
+                    list: false,
                 },
                 {
                     name: '支持Vue',
                     child: [
-                        { name: '一次性赞助',list:null },
-                        { name: '周期性赞助',list:null },
-                        { name: '贴纸',list:null },
-                        { name: '周边',list:null },
-                        { name: 'T 恤商店',list:null }
+                        { name: '一次性赞助', list: null },
+                        { name: '周期性赞助', list: null },
+                        { name: '贴纸', list: null },
+                        { name: '周边', list: null },
+                        { name: 'T 恤商店', list: null }
                     ],
                     list: false,
                 },
@@ -161,30 +191,88 @@ export default defineComponent({
                 {
                     name: '多语言',
                     child: [
-                        { name: 'English',list:null },
-                        { name: '日本語',list:null },
-                        { name: 'Русский',list:null},
-                        { name: '한국어',list:null },
-                        { name: 'Português',list:null },
-                        { name: 'Français',list:null },
-                        { name: 'Tiếng Việt',list:null },
-                        { name: 'Español',list:null },
-                        { name: 'Bahasa Indonesia',list:null },
+                        { name: 'English', list: null },
+                        { name: '日本語', list: null },
+                        { name: 'Русский', list: null },
+                        { name: '한국어', list: null },
+                        { name: 'Português', list: null },
+                        { name: 'Français', list: null },
+                        { name: 'Tiếng Việt', list: null },
+                        { name: 'Español', list: null },
+                        { name: 'Bahasa Indonesia', list: null },
                     ],
-                    list:false,
+                    list: false,
                 },
                 {
                     name: '参与翻译',
                     child: null,
-                    list:false
+                    list: false
                 },
             ],
 
             descriptBox: [
-                {title: '易用',sub:'已经会了 HTML、CSS、JavaScript？即刻阅读指南开始构建应用！'},
-                {title: '灵活',sub:'不断繁荣的生态系统，可以在一个库和一套完整框架之间自如伸缩。'},
-                {title: '高效',sub:'20kB min+gzip 运行大小超快虚拟 DOM最省心的优化'},
-            ]
+                { title: '易用', sub: '已经会了 HTML、CSS、JavaScript？即刻阅读指南开始构建应用！' },
+                { title: '灵活', sub: '不断繁荣的生态系统，可以在一个库和一套完整框架之间自如伸缩。' },
+                { title: '高效', sub: '20kB min+gzip 运行大小超快虚拟 DOM最省心的优化' },
+            ],
+            cpBox: [
+                'https://sponsors.vuejs.org/images/vuemastery.png',
+                'https://sponsors.vuejs.org/images/vueschool.png',
+                'https://sponsors.vuejs.org/images/vehikl.png',
+                'https://sponsors.vuejs.org/images/passionate_people.png',
+                'https://sponsors.vuejs.org/images/storyblok.png',
+                'https://sponsors.vuejs.org/images/ionic.png?v2',
+                'https://sponsors.vuejs.org/images/nuxt.png',
+                'https://sponsors.vuejs.org/images/refurbed.png',
+                'https://sponsors.vuejs.org/images/buttercms.svg',
+                'https://sponsors.vuejs.org/images/sanofi.png',
+                'https://sponsors.vuejs.org/images/codedict.svg',
+                'https://sponsors.vuejs.org/images/vuejs_de_conf.svg',
+                'https://sponsors.vuejs.org/images/laravel.png',
+                'https://sponsors.vuejs.org/images/html_burger.png',
+                'https://sponsors.vuejs.org/images/tidelift.png',
+                'https://sponsors.vuejs.org/images/intygrate.png',
+                'https://sponsors.vuejs.org/images/bacancy_technology.png',
+                'https://sponsors.vuejs.org/images/y8.png',
+                'https://sponsors.vuejs.org/images/devexpress.png',
+                'https://sponsors.vuejs.org/images/fastcoding_inc.svg',
+                'https://sponsors.vuejs.org/images/vpsserver_com.png',
+                'https://sponsors.vuejs.org/images/line_corporation.png',
+                'https://sponsors.vuejs.org/images/plaid__inc_.svg',
+                'https://sponsors.vuejs.org/images/emq.png',
+                'https://sponsors.vuejs.org/images/onyx_gaming_limited.svg',
+                'https://sponsors.vuejs.org/images/lendio.png',
+                'https://sponsors.vuejs.org/images/fen_tre_online_solutions.svg',
+                'https://sponsors.vuejs.org/images/myetherwallet_inc.png',
+                'https://sponsors.vuejs.org/images/barrage.png',
+                'https://sponsors.vuejs.org/images/ant_design_vue.png',
+                'https://sponsors.vuejs.org/images/lemon_law.png',
+                'https://sponsors.vuejs.org/images/mqtt_x.png',
+                'https://sponsors.vuejs.org/images/crisp.png',
+                'https://sponsors.vuejs.org/images/cypress_io.svg',
+                'https://sponsors.vuejs.org/images/handsontable___javascript_data_grid.svg',
+                'https://sponsors.vuejs.org/images/1tool.png',
+                'https://sponsors.vuejs.org/images/learnvue.png',
+                'https://sponsors.vuejs.org/images/quickbooks_tool_hub.png',
+            ],
+
+            isGray,
+            cphandle,
+        }
+    },
+
+    directives: {
+        sc: {
+            mounted: (el,binding) => {
+                if(typeof binding.value === 'function') {
+                    let callback = binding.value.bind(null,el)
+                    document.addEventListener('scroll',callback)
+                }
+            },
+            unmounted:(el,binding) => {
+                let callback = binding.value.bind(null,el)
+                document.removeEventListener('scroll',callback)
+            }
         }
     }
 
@@ -276,7 +364,7 @@ export default defineComponent({
 }
 
 .vhns-li:hover {
-    & > .vhns-child {
+    &>.vhns-child {
         display: block;
     }
 }
@@ -314,6 +402,7 @@ export default defineComponent({
     margin: 0.45rem 0 0;
     line-height: 1.8rem;
 }
+
 .vhns-title-notlist {
     font-weight: 500;
 }
@@ -325,7 +414,8 @@ export default defineComponent({
 
 .vhns-child-li {
     line-height: 1.8rem;
-    & > a {
+
+    &>a {
         color: #354c63;
         text-decoration: none;
     }
@@ -344,7 +434,8 @@ export default defineComponent({
 .vhns-not-list-li {
     line-height: 1.8rem;
 }
-.vhns-not-list-li > a {
+
+.vhns-not-list-li>a {
     color: #354c63;
     text-decoration: none;
 }
@@ -489,5 +580,39 @@ export default defineComponent({
 
 .db-sub {
     color: #4f5959;
+}
+.cc-img {
+    width: 160px;
+    max-height: 60px;
+    object-fit: contain;
+}
+
+.company-contains {
+    background-color: #f6f6f6;
+    padding: 35px 40px 45px;
+    text-align: center;
+}
+
+.cc-all {
+    max-width: 700px;
+    margin: 0 auto;
+}
+.cc-title {
+    color: #999;
+    margin: 0 0 10px;
+}
+
+.cc-ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cc-a {
+    display: inline-block;
+    margin: 20px 15px 0;
+    width: 160px;
 }
 </style>
