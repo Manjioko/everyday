@@ -112,10 +112,47 @@
                             <a href="" class="cc-a"><img :src="item" alt="" class="cc-img" :class="{'cc-gray-img':isGray}" /></a>
                         </li>
                     </ul>
+                    <a href="" class="cc-be">成为赞助者</a>
+                    <p class="cc-p">中国区视频托管赞助商</p>
+                    <a href="" class="cc-youku">
+                        <img src="https://cn.vuejs.org/images/youku.png" alt="" class="cc-youku-img" />
+                    </a>
                 </div>
             </article>
         </section>
+
+        <!-- 订阅 -->
+        <section class="subscribe">
+            <article class="subscribe-contains">
+                <h2 class="sc-title">订阅我们的周刊（英文）</h2>
+                <div class="sc-input-list">
+                    <input type="text" class="sc-input" placeholder="邮件地址">
+                    <input type="submit" class="sc-submit" value="订阅">
+                </div>
+                <p class="sc-sub">你可以在 <a href="" class="sc-sub-a">news.vuejs.org</a> 翻阅往期的 issue,也可以收听 podcast。</p>
+            </article>
+        </section>
     </main>
+
+    <footer>
+        <section class="vue-footer">
+            <article class="vf-contains">
+                <div class="vf-logo">
+                    <a href="" class="vf-logo-a">
+                        <img src="../assets/github-light.svg" alt="" class="vf-logo-img" />
+                    </a>
+                    <a href="" class="vf-logo-a">
+                        <img src="../assets/twitter.svg" alt="" class="vf-logo-img" />
+                    </a>
+                    <a href="" class="vf-logo-a">
+                        <img src="../assets/mit.svg" alt="" class="vf-logo-img" />
+                    </a>
+                </div>
+                <p class="vf-protocol">遵循 MIT 开源协议</p>
+                <p class="vf-version">Copyright © 2014-2022 Evan You</p>
+            </article>
+        </section>
+    </footer>
 </template>
 
 <script lang="ts">
@@ -585,6 +622,14 @@ export default defineComponent({
     width: 160px;
     max-height: 60px;
     object-fit: contain;
+    transition: all 0.3s ease;
+    filter: grayscale(100%);
+    opacity: 0.66;
+}
+
+.cc-gray-img {
+    filter: none;
+    opacity: 1;
 }
 
 .company-contains {
@@ -614,5 +659,113 @@ export default defineComponent({
     display: inline-block;
     margin: 20px 15px 0;
     width: 160px;
+}
+
+.cc-be {
+    margin-top: 40px;
+    text-decoration: none;
+    color: #42b983;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 1px solid #4fc08d;
+    padding: 0.75rem 2rem;
+    border-radius: 2rem;
+}
+
+.cc-p {
+    margin: 2.5rem 0 10px;
+    font-weight: 600;
+    color: #999;
+    font-size: 1.17rem;
+}
+
+.cc-youku {
+    margin: 20px 15px 0;
+    display: inline-block;
+}
+
+.cc-youku-img {
+    width: 120px;
+}
+
+.subscribe-contains {
+    padding: 40px 20px 70px;
+    text-align: center;
+}
+
+.sc-title {
+    font-size: 1.17rem;
+    font-weight: 600;
+    color: #273849;
+}
+
+.sc-input-list {
+    position: relative;
+    max-width: 550px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.sc-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 80px 10px 20px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    border-radius: 50px;
+}
+
+.sc-submit {
+    position: absolute;
+    padding: 4px 20px;
+    height: calc(100% - 8px);
+    right: 4px;
+    top: 4px;
+    cursor: pointer;
+    background-color: #4fc08d;
+    border: 1px solid #4fc08d;
+    display: inline-block;
+    color: #fff;
+    font-size: 1.05rem;
+    letter-spacing: 0.1rem;
+    min-width: 8rem;
+    border-radius: 2rem;
+}
+
+.subscribe-contains {
+    padding: 40px 20px 70px;
+    text-align: center;
+}
+
+.sc-sub {
+    margin-top: 10px;
+    word-spacing: 0.05rem;
+}
+
+.vf-contains {
+    background-color: #475050;
+    padding: 40px;
+    text-align: center;
+    color: #fff;
+}
+
+.vf-logo-a {
+    margin: 1rem 5px;
+    display: inline-block;
+}
+
+.vf-logo-img {
+    width: 18px;
+    height: 18px;
+}
+
+.vf-protocol {
+    margin-bottom: 0;
+}
+
+.vf-version {
+    margin-top: 5px;
 }
 </style>
