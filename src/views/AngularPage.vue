@@ -359,7 +359,7 @@ export default defineComponent({
 }
 
 .act-h2 {
-    margin-bottom: 0;
+    margin: 0;
     color: #1976d2;
     font-size: 1.6rem;
     font-weight: 500;
