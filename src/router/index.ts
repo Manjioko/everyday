@@ -5,6 +5,7 @@ import Baidu from '../views/BaiduPage.vue'
 import Rust from '../views/RustPage.vue'
 import Ruby from '../views/RubyView.vue'
 import VuePage from '../views/VuePage.vue'
+import Angular from '../views/AngularPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -44,6 +45,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/vue',
     name: 'vue',
     component: VuePage
+  },
+  {
+    path: '/angular',
+    name: 'angular',
+    component: Angular
   },
 ]
 

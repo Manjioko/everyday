@@ -36,6 +36,7 @@ export default defineComponent({
         {title: 'Rust',href: '/rust'},
         {title: 'Ruby',href: '/ruby'},
         {title: 'Vue',href: '/vue'},
+        {title: 'angular',href: '/angular'},
       ]
     }
   }
