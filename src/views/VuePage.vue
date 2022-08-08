@@ -768,4 +768,9 @@ export default defineComponent({
 .vf-version {
     margin-top: 5px;
 }
+
+.sc-sub-a {
+    color: #42b983;
+    text-decoration: none;
+}
 </style>
