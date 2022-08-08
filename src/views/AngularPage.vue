@@ -129,6 +129,27 @@
         </section>
 
     </main>
+
+    <footer class="ang-footer">
+        <article class="ang-f-contains">
+            <div class="af-box">
+                <div class="af-list-box" v-for="(item, index) in footerBox" :key="index">
+                    <p class="af-list-title">{{item.title}}</p>
+                    <ul class="af-list-ul">
+                        <li class="af-list-li" v-for="(subItem, subIndex) in item.sub" :key="subIndex">
+                            <a href="" class="af-li-a">{{subItem}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="af-other">
+                <p class="af-other-version">Super-powered by Google ©2010-2022.</p>
+                <p class="af-other-mit">代码授权方式：MIT-style License. 文档授权方式：CC BY 4.0.</p>
+                <p class="af-other-now-version">当前版本：14.1.0-local+sha.cf7bfdbbfe.</p>
+                <p class="af-other-police">沪ICP备13038357号-21</p>
+            </div>
+        </article>
+    </footer>
 </template>
 
 <script lang="ts">
@@ -142,6 +163,26 @@ export default defineComponent({
 
     return {
         headerBox: ['特性','文档','资源','活动','译者博客','关于中文版'],
+        footerBox: [
+            {
+                title:"资源",
+                sub:['关于','资源列表','宣传资料','博客','使用情况分析'],
+                
+            },
+            {
+                title:"帮助",
+                sub:['Stack Overflow','加入 Discord','Gitter','报告问题','行为守则'],
+            },
+            {
+                title:"社区",
+                sub:['活动','聚会','Twitter','GitHub','贡献'],
+            },
+            {
+                title:"语言",
+                sub:['Español','English Version','正體中文版','日本語版','한국어','完整的语言列表'],
+            },
+
+        ],
     }
   }
 });
@@ -304,7 +345,7 @@ export default defineComponent({
 }
 
 .acc-text {
-    padding-right: 15%;
+    padding-right: 10%;
     flex: 1;
 }
 
@@ -372,5 +413,62 @@ export default defineComponent({
     padding: 8px 0;
 }
 
+
+.ang-footer {
+    position: relative;
+}
+
+.ang-f-contains {
+    background-color: #1976d2;
+    padding: 48px 25px;
+}
+
+
+
+.ang-f-contains:after {
+    content: "";
+    background: url(https://angular.cn/assets/images/logos/angular/angular_whiteTransparent_withMargin.png) top 0 left 0 repeat,url(https://angular.cn/assets/images/logos/angular/angular_whiteTransparent_withMargin.png)top 80px left 160px repeat;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0.05;
+    background-size: 320px auto;
+}
+
+.af-box {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 24px;
+    margin: 0 auto 24px;
+    justify-content: center;
+    max-width: 980px;
+}
+
+.af-list-title {
+    color: #fff;
+}
+
+.af-list-ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.af-list-li {
+    padding: 4px 0;
+    text-align: left;
+}
+
+.af-li-a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.af-other {
+    text-align: center;
+    color: #fff;
+}
 
 </style>
