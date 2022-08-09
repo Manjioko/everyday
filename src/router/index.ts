@@ -6,12 +6,19 @@ import Rust from '../views/RustPage.vue'
 import Ruby from '../views/RubyView.vue'
 import VuePage from '../views/VuePage.vue'
 import Angular from '../views/AngularPage.vue'
+import test from '../views/test.vue'
+import Node from '../views/NodePage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/test',
+    name: 'test',
+    component: test
   },
   // {
   //   path: '/about',
@@ -50,6 +57,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/angular',
     name: 'angular',
     component: Angular
+  },
+  {
+    path: '/node',
+    name: 'node',
+    component: Node
   },
 ]
 

@@ -37,6 +37,7 @@ export default defineComponent({
         {title: 'Ruby',href: '/ruby'},
         {title: 'Vue',href: '/vue'},
         {title: 'Angular',href: '/angular'},
+        {title: 'Node',href: '/node'},
       ]
     }
   }
