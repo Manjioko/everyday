@@ -38,6 +38,7 @@ export default defineComponent({
         {title: 'Vue',href: '/vue'},
         {title: 'Angular',href: '/angular'},
         {title: 'Node',href: '/node'},
+        {title: 'flutter',href: '/flutter'},
       ]
     }
   }

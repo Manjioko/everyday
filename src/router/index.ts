@@ -8,6 +8,7 @@ import VuePage from '../views/VuePage.vue'
 import Angular from '../views/AngularPage.vue'
 import test from '../views/test.vue'
 import Node from '../views/NodePage.vue'
+import Flutter from '../views/flutterPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -62,6 +63,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/node',
     name: 'node',
     component: Node
+  },
+  {
+    path: '/flutter',
+    name: 'flutter',
+    component: Flutter
   },
 ]
 
