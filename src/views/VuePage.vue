@@ -298,20 +298,20 @@ export default defineComponent({
         }
     },
 
-    directives: {
-        sc: {
-            mounted: (el,binding) => {
-                if(typeof binding.value === 'function') {
-                    let callback = binding.value.bind(null,el)
-                    document.addEventListener('scroll',callback)
-                }
-            },
-            unmounted:(el,binding) => {
-                let callback = binding.value.bind(null,el)
-                document.removeEventListener('scroll',callback)
-            }
-        }
-    }
+    // directives: {
+    //     sc: {
+    //         mounted: (el,binding) => {
+    //             if(typeof binding.value === 'function') {
+    //                 let callback = binding.value.bind(null,el)
+    //                 document.addEventListener('scroll',callback)
+    //             }
+    //         },
+    //         unmounted:(el,binding) => {
+    //             let callback = binding.value.bind(null,el)
+    //             document.removeEventListener('scroll',callback)
+    //         }
+    //     }
+    // }
 
 });
 </script>

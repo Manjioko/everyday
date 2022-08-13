@@ -1,5 +1,5 @@
 <template>
-    <header class="flutter-header">
+    <header class="flutter-header" :class="{'fh-hidden': navHidden}">
         <section class="fh-s">
             <article class="fh-contains">
                 <div class="fh-logo">
@@ -10,7 +10,8 @@
                 <div class="fh-list">
                     <ul class="fh-list-ul">
                         <li class="fh-list-li" v-for="(item,index) in headerBox" :key="index">
-                            <a href="" class="fh-list-a">{{item}}</a>
+                            <a href="" class="fh-list-a">{{item.title}}</a>
+                            <sub-nav :list="item.list" />
                         </li>
                     </ul>
                 </div>
@@ -24,7 +25,7 @@
         </section>
     </header>
 
-    <main class="flutter-main">
+    <main class="flutter-main" v-sc="handleTopNav">
         <section class="fm-create">
             <article class="fm-create-contains">
                 <div class="fm-cc-title">
@@ -61,18 +62,59 @@
                 </div>
             </article>
         </section>
+
+        <!-- 小喇叭 -->
+        <section class="broadcast">
+            <article class="b-contains">
+                <div class="b-logo">
+                    <img src="https://files.flutter-io.cn/flutter-cn/landing/a40ceb6e5d342207de7b.png" alt="" class="b-img" />
+                </div>
+                <div class="b-contents">
+                    <a class="b-c-p">
+                        回顾 Flutter 在本次 I/O 上的发布内容
+                        <img src="../assets/arrow.svg" alt="" class="b-c-a">
+                    </a>
+                </div>
+            </article>
+        </section>
     </main>
 </template>
 
 <script lang="ts">
-import { defineComponent, } from 'vue';
+import { defineComponent, ref, } from 'vue';
+import subNav from '../components/FlutterPageComponent/subNav.vue'
 
 export default defineComponent({
   name: 'flutterApge',
-
+  components: {
+    subNav,
+  },
   setup() {
+
+    // 处理导航栏显示或隐藏
+    let navHidden = ref(false);
+    function handleTopNav(event: Element) {
+
+        let top = event.getBoundingClientRect().top;
+        if(top < -85 && navHidden.value === false) {
+            navHidden.value = true;
+        }
+        if(top > -85 && navHidden.value === true) {
+            navHidden.value = false;
+        }
+    }
     return {
-        headerBox: ['平台','生态','案例','文档'],
+        headerBox: [
+            {title: '平台',list: ['移动平台','Web 平台','桌面平台','嵌入式平台']},
+            {title: '生态',list: ['学习资源','Flutter Favorite 项目','使用 Package','盈利方式','游戏开发']},
+            {title: '案例',list: ['社区','活动','文化']},
+            {title: '文档',list: ['官方博文','IDE 集成','热重载','性能优化','安装 Flutter','开发者工具','实用教程','社区教程']}
+            ],
+
+        // 处理导航栏显示或隐藏
+        handleTopNav,
+        navHidden,
+
 
     }
   }
@@ -87,6 +129,12 @@ export default defineComponent({
 .flutter-header {
     position: fixed;
     width: 100%;
+    transition: transform 0.3s;
+
+
+    // 在同级别中的三大元素里面（header main footer），我们设置header的层级最高
+    // 这样可以保证二级下拉菜单不会被后面的内容区和尾部区内容覆盖遮挡住
+    z-index: 1;
 }
 
 .fh-contains {
@@ -109,10 +157,22 @@ export default defineComponent({
 
 .fh-list-li {
     display: inline-block;
-    padding: 13px 16px;
+    padding: 10px 22px;
     margin-left: 8px;
     font-size: 14px;
     font-weight: 700;
+    border-radius: 24px;
+    position: relative;
+    & > :not(a) {
+        display: none;
+    }
+}
+
+.fh-list-li:hover {
+    background-color: #fafafa26;
+    & > :not(a) {
+        display: block;
+    }
 }
 
 .fh-list-a {
@@ -161,6 +221,12 @@ export default defineComponent({
 .fm-cc-left-cards {
     position: relative;
     top: 100px;
+    animation: left-animate 0.9s ease-in-out;
+}
+
+@keyframes left-animate {
+    0% {top: 600px; opacity: 0;}
+    100% {top: 100px; opacity: 1;}
 }
 
 .fm-left-cards-top-card {
@@ -201,6 +267,12 @@ export default defineComponent({
 .ff-cc-middle-cards {
     padding: 0 32px;
     height: 900px;
+    animation: middle-animate 0.6s ease-in-out;
+}
+
+@keyframes middle-animate {
+    0% {transform: translateY(600px); opacity: 0;}
+    100% {transform: translateY(0); opacity: 1;}
 }
 
 .ff-cc-cards-card {
@@ -215,6 +287,12 @@ export default defineComponent({
     position: relative;
     top: 100px;
     overflow: hidden;
+    animation: right-animate 1s ease-in-out;
+}
+
+@keyframes right-animate {
+    0% {top: 600px; opacity: 0;}
+    100% {top: 100px; opacity: 1;}
 }
 
 
@@ -264,6 +342,16 @@ export default defineComponent({
     left: 216px;
 }
 
+.fm-cc-title {
+    position: relative;
+    animation: title-animate 0.3s ease-in-out;
+}
+
+@keyframes title-animate {
+    0% {top: 20px; opacity: 0;}
+    100% {top: 0; opacity: 1;}
+}
+
 .fm-cc-title-h1 {
     margin-top: 0;
     margin-bottom: 80px;
@@ -299,4 +387,40 @@ export default defineComponent({
     border-radius: 24px;
 }
 
+.fh-hidden {
+    transform: translateY(-86px);
+    transition: transform 0.3s;
+}
+
+
+.broadcast {
+    display: inline-block;
+    width: 100%;
+}
+
+.b-contains {
+    background: #0468d7;
+    max-width: 80vw;
+    margin: 50px auto 70px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 5px #ccc;
+}
+
+.b-img {
+    width: 50px;
+    margin-right: 24px;
+}
+
+.b-contents {
+    cursor: pointer;
+}
+
+.b-c-a {
+    height: 12px;
+}
 </style>

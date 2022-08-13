@@ -8,7 +8,7 @@ import VuePage from '../views/VuePage.vue'
 import Angular from '../views/AngularPage.vue'
 import test from '../views/test.vue'
 import Node from '../views/NodePage.vue'
-import Flutter from '../views/flutterPage.vue'
+import Flutter from '../views/FlutterPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
