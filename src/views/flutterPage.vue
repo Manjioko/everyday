@@ -1,25 +1,37 @@
 <template>
-    <header class="flutter-header" :class="{'fh-hidden': navHidden}">
+    <header class="flutter-header" :class="{'fh-hidden': navHidden,'fh-show':navMiddleShow}">
         <section class="fh-s">
-            <article class="fh-contains">
+            <article class="fh-contains" :class="{'fh-middle-contains': navMiddleShow}">
                 <div class="fh-logo">
                     <a href="" class="fh-logo-a">
-                        <img src="https://files.flutter-io.cn/flutter-cn/landing/ec64036b4eacc9f3fd73.svg" alt="" class="fh-logo-img" />
+                        <img 
+                        src="https://files.flutter-io.cn/flutter-cn/landing/ec64036b4eacc9f3fd73.svg" 
+                        alt="" 
+                        class="fh-logo-img" 
+                        v-show="!navMiddleShow"
+                        />
+                        <img 
+                        src="https://files.flutter-io.cn/images/branding/flutterlogo/flutter-cn-logo.png" 
+                        alt="" 
+                        class="fh-logo-img fh-logo-middle-img" 
+                        v-show="navMiddleShow" 
+                        />
                     </a>
                 </div>
                 <div class="fh-list">
                     <ul class="fh-list-ul">
                         <li class="fh-list-li" v-for="(item,index) in headerBox" :key="index">
-                            <a href="" class="fh-list-a">{{item.title}}</a>
+                            <a href="" class="fh-list-a" :class="{'fh-list-middle-a': navMiddleShow}">{{item.title}}</a>
                             <sub-nav :list="item.list" />
                         </li>
                     </ul>
                 </div>
                 <div class="fh-search">
-                    <img src="../assets/search.svg" alt="" class="fh-search-img" />
+                    <img src="../assets/search.svg" alt="" class="fh-search-img" v-show="navMiddleShow" />
+                    <img src="../assets/search-white.svg" alt="" class="fh-search-img" v-show="!navMiddleShow" />
                 </div>
                 <div class="fh-start-to-use">
-                    <a href="" class="fh-stu-a">开始使用</a>
+                    <a href="" class="fh-stu-a" :class="{'fh-stu-middle-a':navMiddleShow}">开始使用</a>
                 </div>
             </article>
         </section>
@@ -82,30 +94,52 @@
         <section class="switch" >
             <article class="switch-contains">
                 <div class="switch-bar">
+                    <h1 class="switch-bar-h1">Flutter 是 Google 开源的应用开发框架，仅通过一套代码库，就能构建精美的、原生平台编译的多平台应用。</h1>
                     <ul class="sb-ul">
-                        <li class="sb-li" :class="{'sb-active': barActive.Fast}"  @click="handleActive($event,barActive.Fast)">快速</li>
-                        <li class="sb-li" :class="{'sb-active': barActive.Productive}" @click="handleActive($event,barActive.Productive)">高效</li>
-                        <li class="sb-li" :class="{'sb-active': barActive.Flexible}" @click="handleActive($event,barActive.Flexible)">灵活</li>
+                        <li 
+                        class="sb-li" 
+                        :class="{'sb-active': action === barActive.Fast}"  
+                        @click="handleActive($event,barActive.Fast)"
+                        >
+                        快速
+                        </li>
+                        <li 
+                        class="sb-li" 
+                        :class="{'sb-active': action === barActive.Productive}" 
+                        @click="handleActive($event,barActive.Productive)"
+                        >
+                        高效
+                        </li>
+                        <li 
+                        class="sb-li" 
+                        :class="{'sb-active': action === barActive.Flexible}" 
+                        @click="handleActive($event,barActive.Flexible)"
+                        >
+                        灵活
+                        </li>
                     </ul>
                 </div>
+
+                <!-- video 播放 -->
                 <div class="switch-content">
-                    <div class="sc-box">
+                    <div class="sc-box" v-for="(item, index) in barBox" :key="index" v-show="action === index">
                         <div class="sc-video">
-                            <video muted autoplay loop src="https://files.flutter-io.cn/flutter-cn/landing/029113ae2cbbcf9493fe.mp4"></video>
+                            <video muted autoplay loop class="sc-video-content" :src="item.src"></video>
                         </div>
                         <div class="sc-text">
-                            <h1 class="sc-t-h1">快速</h1>
+                            <h1 class="sc-t-h1" :style="{color: item.color}">{{item.title}}</h1>
                             <p class="sc-t-p">
-                                屏幕上的每个像素都由你来把握，尽情去创造不被定义、不受局限、彰显品牌的完美体验吧，这个舞台专属于你。
+                                {{item.sub}}
                             </p>
-                        </div>
-                        <div class="sc-btn">
                             <a href="" class="sc-btn-a">在 DartPad 中尝试</a>
                         </div>
                     </div>
                 </div>
             </article>
         </section>
+
+        <!-- 多平台 -->
+        
     </main>
 </template>
 
@@ -127,27 +161,48 @@ export default defineComponent({
         Productive,
         Flexible,
     }
-
+    // 初始化action值
+    let action = ref<barActive>(barActive.Fast);
     function handleActive(e:Event,en: barActive) {
         switch(en) {
             case barActive.Fast:
-                barActive.Fast
+                action.value = barActive.Fast;
+                break;
+            case barActive.Productive:
+                action.value = barActive.Productive;
+                break;
+            case barActive.Flexible:
+                action.value = barActive.Flexible;
+                break;
         }
     }
 
 
     // 处理导航栏显示或隐藏
     let navHidden = ref(false);
+    let navMiddleShow = ref(false);
     function handleTopNav(event: Element) {
 
         let top = event.getBoundingClientRect().top;
+        // console.log(top)
         if(top < -85 && navHidden.value === false) {
             navHidden.value = true;
         }
         if(top > -85 && navHidden.value === true) {
             navHidden.value = false;
         }
+
+        // 内容区导航栏
+        if(top < -1500 && navMiddleShow.value === false) {
+            navMiddleShow.value = true
+        }
+
+        if(top > -1500 && navMiddleShow.value === true) {
+            navMiddleShow.value = false
+        }
     }
+
+
     return {
         headerBox: [
             {title: '平台',list: ['移动平台','Web 平台','桌面平台','嵌入式平台']},
@@ -156,13 +211,35 @@ export default defineComponent({
             {title: '文档',list: ['官方博文','IDE 集成','热重载','性能优化','安装 Flutter','开发者工具','实用教程','社区教程']}
             ],
 
+        barBox:[
+            {
+                title: '快速', 
+                color: '#14c2ad', 
+                src:'https://files.flutter-io.cn/flutter-cn/landing/029113ae2cbbcf9493fe.mp4', 
+                sub: 'Flutter 代码可以直接编译成 ARM 或 Intel 平台的机器代码，以及 JavaScript 代码，确保了 Flutter 应用能够拥有原生平台的性能表现。',
+            },
+            {
+                title: '高效', 
+                color: '#833ef2',
+                src: 'https://files.flutter-io.cn/flutter-cn/landing/31e54d4c95600ffb3a77.mp4',
+                sub: '使用热重载 (Hot Reload) 快速构建和迭代你的产品，更新代码后即刻看到变化，也不会丢失应用状态。',
+            },
+            {
+                title: '灵活', 
+                color: '#f25d50',
+                src: 'https://files.flutter-io.cn/flutter-cn/landing/80b7a7ee6bbad2d2d7f8.mp4',
+                sub: '屏幕上的每个像素都由你来把握，尽情去创造不被定义、不受局限、彰显品牌的完美体验吧，这个舞台专属于你。'
+            },
+        ],
         // 处理导航栏显示或隐藏
         handleTopNav,
         navHidden,
+        navMiddleShow,
         handleActive,
         barActive,
-
-
+        action,
+        // actionObject,
+        // barBox,
     }
   }
   
@@ -189,6 +266,9 @@ export default defineComponent({
     align-items: center;
     padding: 0 50px;
     height: 86px;
+}
+.fh-middle-contains {
+    box-shadow: 0 0 6px #ccc;
 }
 
 .fh-logo {
@@ -227,6 +307,9 @@ export default defineComponent({
     text-decoration: none;
     display: inline-block;
 }
+.fh-list-middle-a {
+    color: #4a4a4a
+}
 
 .fh-search {
     padding: 0 24px;
@@ -248,6 +331,11 @@ export default defineComponent({
     border-radius: 24px;
     font-size: 14px;
     font-weight: bold;
+}
+
+.fh-stu-middle-a {
+    background-color: #0468d7;
+    color: #fff;
 }
 
 
@@ -438,6 +526,12 @@ export default defineComponent({
     transform: translateY(-86px);
     transition: transform 0.3s;
 }
+.fh-show {
+    transform: translateY(0);
+    transition: transform 0.3s;
+    background: #fff;
+    color: #4a4a4a;
+}
 
 
 .broadcast {
@@ -473,6 +567,8 @@ export default defineComponent({
 
 .switch-bar {
     text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .sb-ul {
@@ -482,6 +578,7 @@ export default defineComponent({
     margin: 0;
     border-radius: 24px;
     background: #f8f9fa;
+    margin-bottom: 30px;
 }
 
 .sb-li {
@@ -489,6 +586,10 @@ export default defineComponent({
     width: 165px;
     height: 40px;
     line-height: 40px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0468d7;
+    cursor: pointer;
 }
 
 .sb-li:hover {
@@ -500,5 +601,83 @@ export default defineComponent({
 .sb-li:active {
     background: #0468d7;
     border-radius: 24px;
+}
+
+.sb-active {
+    background-color: #0468d7 !important;
+    border-radius: 24px;
+    color: #fff !important;
+    transition: all 0.5s;
+}
+
+.sc-box {
+    display: grid;
+    grid-template-columns: 1fr 394px;
+    position: relative;
+    animation: sc-box-animate 0.3s ease-in-out;
+}
+
+@keyframes sc-box-animate {
+    0% {top: 100px; opacity: 0;}
+    100% {top: 0; opacity: 1;}
+}
+.sc-video {
+    position: relative;
+    left: -60px;
+}
+
+
+.sc-video-content {
+    width: 125%;
+}
+
+.sc-text {
+    position: relative;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sc-t-h1 {
+    font-size: 36px;
+    color: #14c2ad;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+.sc-t-p {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
+.sc-btn-a {
+    border: 1px solid #0468d7;
+    display: inline-block;
+    align-self: start;
+    padding: 0 32px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 24px;
+    color: #0468d7;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.fh-logo-middle-img {
+    width: 126px;  
+}
+
+.switch-bar-h1 {
+    font-size: 32px;
+    font-weight: 400;
+    margin-top: 0;
+}
+
+.switch-contains {
+    width: calc(100% - 250px);
+    margin: 0 auto;
 }
 </style>
