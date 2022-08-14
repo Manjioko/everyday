@@ -77,6 +77,35 @@
                 </div>
             </article>
         </section>
+
+        <!-- bar 切换 -->
+        <section class="switch" >
+            <article class="switch-contains">
+                <div class="switch-bar">
+                    <ul class="sb-ul">
+                        <li class="sb-li" :class="{'sb-active': barActive.Fast}"  @click="handleActive($event,barActive.Fast)">快速</li>
+                        <li class="sb-li" :class="{'sb-active': barActive.Productive}" @click="handleActive($event,barActive.Productive)">高效</li>
+                        <li class="sb-li" :class="{'sb-active': barActive.Flexible}" @click="handleActive($event,barActive.Flexible)">灵活</li>
+                    </ul>
+                </div>
+                <div class="switch-content">
+                    <div class="sc-box">
+                        <div class="sc-video">
+                            <video muted autoplay loop src="https://files.flutter-io.cn/flutter-cn/landing/029113ae2cbbcf9493fe.mp4"></video>
+                        </div>
+                        <div class="sc-text">
+                            <h1 class="sc-t-h1">快速</h1>
+                            <p class="sc-t-p">
+                                屏幕上的每个像素都由你来把握，尽情去创造不被定义、不受局限、彰显品牌的完美体验吧，这个舞台专属于你。
+                            </p>
+                        </div>
+                        <div class="sc-btn">
+                            <a href="" class="sc-btn-a">在 DartPad 中尝试</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
     </main>
 </template>
 
@@ -90,6 +119,22 @@ export default defineComponent({
     subNav,
   },
   setup() {
+
+
+    // bar 切换时样式更改
+    enum barActive {
+        Fast,
+        Productive,
+        Flexible,
+    }
+
+    function handleActive(e:Event,en: barActive) {
+        switch(en) {
+            case barActive.Fast:
+                barActive.Fast
+        }
+    }
+
 
     // 处理导航栏显示或隐藏
     let navHidden = ref(false);
@@ -114,6 +159,8 @@ export default defineComponent({
         // 处理导航栏显示或隐藏
         handleTopNav,
         navHidden,
+        handleActive,
+        barActive,
 
 
     }
@@ -422,5 +469,36 @@ export default defineComponent({
 
 .b-c-a {
     height: 12px;
+}
+
+.switch-bar {
+    text-align: center;
+}
+
+.sb-ul {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 24px;
+    background: #f8f9fa;
+}
+
+.sb-li {
+    display: inline-block;
+    width: 165px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.sb-li:hover {
+    background-color: #e8eaed;
+    color: #4a4a4a;
+    border-radius: 24px;
+}
+
+.sb-li:active {
+    background: #0468d7;
+    border-radius: 24px;
 }
 </style>
