@@ -139,7 +139,77 @@
         </section>
 
         <!-- 多平台 -->
-        
+        <section class="muti">
+            <article class="muti-contains" :class="{'muti-c-re' : index === 1}" v-for="(item,index) in mutiBox" :key="index">
+                <div class="muti-left" :class="{'muti-left-re' : index === 1}">
+                    <p class="ml-color-p" :style="{color: item.color}">{{item.colorText}}</p>
+                    <h1 class="ml-title">{{item.title}}</h1>
+                    <p class="ml-sub">{{item.sub}}</p>
+                    <a href="" class="ml-a">{{item.btn}}</a>
+                </div>
+                <div class="muti-right">
+                    <img :src="item.src" alt="" class="mr-img">
+                </div>
+            </article>
+        </section>
+
+        <!-- 开发者故事 -->
+        <section class="dev">
+            <article class="dev-contains">
+                <div class="dc-left">
+                    <h2 class="dc-h2">开发者成功故事</h2>
+                    <p class="dc-p">学习 GPay 团队如何使用 Flutter 改变移动支付格局</p>
+                    <p class="dc-more">
+                        <a href="" class="dc-more-a">
+                            了解更多 
+                            <img src="../assets/arrow-black.svg" alt="" class="b-c-a">
+                        </a>
+                    </p>
+                </div>
+                <div class="dc-right">
+                    <img src="https://files.flutter-io.cn/flutter-cn/landing/17b428191082bb916954.png" alt="" class="dc-right-img">
+                </div>
+            </article>
+        </section>
+
+        <!-- 社区挂墙图 -->
+        <section class="community">
+            <article class="community-contains">
+                <div class="cc-pic-layout">
+                    <div class="cc-pic">
+                        <div 
+                        class="cc-item" :class="{
+                            'cc-item-plus': index === 1 || index === 5,
+                            'cc-item-div': index === 2 || index === 4,
+                            'cc-item-middle': index === 3
+                        }" 
+                        v-for="(item,index) in communityPic" 
+                        :key="index"
+                        >
+                            <div class="cc-item-box" v-for="(subItem,subIndex) in item" :key="subIndex">
+                                <img :src="subItem" alt="" class="cc-item-box-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cc-text">
+                    <p class="cc-text-tip-title">全球性的开源社区</p>
+                    <h1 class="cc-text-title">
+                        由 Google 支持
+                        <br>
+                        向所有人开放
+                    </h1>
+                    <p class="cc-text-sub-p">
+                        Flutter 框架开源并公开协作，pub.dev 平台构建了统一和丰富的插件生态，来社区，一定能找到你想要的。
+                    </p>
+                    <a href="" class="cc-text-suc-a">成功故事</a>
+                    <a href="" class="cc-text-join-a">
+                        加入社区
+                        <img src="../assets/arrow-black.svg" alt="" class="b-c-a" />
+                    </a>
+                </div>
+            </article>
+        </section>
     </main>
 </template>
 
@@ -231,6 +301,68 @@ export default defineComponent({
                 sub: '屏幕上的每个像素都由你来把握，尽情去创造不被定义、不受局限、彰显品牌的完美体验吧，这个舞台专属于你。'
             },
         ],
+        mutiBox: [
+            {
+                colorText: '多平台支持',
+                title: '触达每个屏幕前的你的用户',
+                sub: '部署到多种设备，只需要一份代码库，支持移动、网页、桌面和嵌入式设备。',
+                src: 'https://files.flutter-io.cn/flutter-cn/landing/ed2e069ee37807f5975a.jpg',
+                color: '#13b9fd',
+                btn: '查看支持的设备平台'
+            },
+            {
+                colorText: '开发体验',
+                title: '革新性的转变',
+                sub: '在工程中可以使用插件、自动化测试、开发者工具以及任何可以用来帮助构建高质量应用的工具。',
+                src: 'https://files.flutter-io.cn/flutter-cn/landing/75c5b74c32dfd7b7e8f3.jpg',
+                color: '#14c2ad',
+                btn: '使用 Flutter 开发应用'
+            },
+            {
+                colorText: '稳定可依赖',
+                title: '被多数人信赖',
+                sub: 'Flutter 由 Google 支持被并广泛使用，全球性的开发者社区广泛参与和维护，并得到众多世界知名品牌的信任。',
+                src: '	https://files.flutter-io.cn/flutter-cn/landing/3461c6a5b33c339001c5.jpg',
+                color: '#f25d50',
+                btn: '探索 Flutter 生态'
+            },
+        ],
+
+        communityPic: [
+            [
+                'https://files.flutter-io.cn/flutter-cn/landing/026e9dc31ddab22dde07.svg',
+                'https://files.flutter-io.cn/flutter-cn/landing/c1000ff9421405743627.svg',
+                'https://files.flutter-io.cn/flutter-cn/landing/65e30624efb7a782550a.svg',
+                'https://files.flutter-io.cn/flutter-cn/landing/f777219d6581e15d8eeb.svg',
+            ],
+            [
+                'https://files.flutter-io.cn/flutter-cn/landing/def11a7e7d20e91d5ef9.svg',
+                'https://files.flutter-io.cn/flutter-cn/landing/8e2858e92284b9d64bc9.svg',
+                'https://files.flutter-io.cn/flutter-cn/landing/d10d50462c35626a2ed8.svg',
+            ],
+            [
+                'https://files.flutter-io.cn/flutter-cn/landing/82de7f0e24cb515bda86.svg',
+                'https://files.flutter-io.cn/flutter-cn/landing/f3e315ddcd534a574bb5.svg',
+            ],
+            [
+                'https://files.flutter-io.cn/flutter-cn/landing/0b591100c77c7f332b7f.svg',
+            ],
+            [
+                'https://files.flutter-io.cn/flutter-cn/landing/0935a9aa643a1a19b3cd.svg',
+                'https://files.flutter-io.cn/flutter-cn/landing/6769550706195145726c.svg',
+            ],
+            [
+                'https://files.flutter-io.cn/flutter-cn/landing/a95814af82f794458f82.svg',
+                'https://files.flutter-io.cn/flutter-cn/landing/b69d05d69cd668df2f8c.svg',
+                'https://files.flutter-io.cn/flutter-cn/landing/755432d87de85ced1687.svg',
+            ],
+            [
+                'https://files.flutter-io.cn/flutter-cn/landing/3d2c4bdcf7c2b402aaf8.png',
+                'https://files.flutter-io.cn/flutter-cn/landing/05719422f9c40930b2e6.svg',
+                'https://files.flutter-io.cn/flutter-cn/landing/b2f75154dc7faecd4e47.svg',
+                'https://files.flutter-io.cn/flutter-cn/landing/d67e0d9ef41c618324b3.svg'
+            ]
+        ],
         // 处理导航栏显示或隐藏
         handleTopNav,
         navHidden,
@@ -241,7 +373,7 @@ export default defineComponent({
         // actionObject,
         // barBox,
     }
-  }
+  },
   
 });
 </script>
@@ -541,7 +673,7 @@ export default defineComponent({
 
 .b-contains {
     background: #0468d7;
-    max-width: 80vw;
+    max-width: 70vw;
     margin: 50px auto 70px;
     padding: 24px;
     display: flex;
@@ -629,6 +761,7 @@ export default defineComponent({
 
 .sc-video-content {
     width: 125%;
+    mix-blend-mode: darken;
 }
 
 .sc-text {
@@ -677,7 +810,233 @@ export default defineComponent({
 }
 
 .switch-contains {
-    width: calc(100% - 250px);
+    width: 70vw;
     margin: 0 auto;
 }
+
+.muti-contains {
+    width: 70vw;
+    padding: 50px 0;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 40%;
+    align-items: center;
+}
+
+.muti-left {
+    padding: 0 140px 0 50px;
+}
+
+.ml-color-p {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #13b9fd;
+}
+
+.ml-title {
+    font-size: 60px;
+    line-height: 1;
+    margin: 0;
+    margin-bottom: 32px;
+}
+
+.ml-sub {
+    margin-bottom: 32px;
+    margin-top: 0;
+    font-size: 20px;
+    line-height: 1.4;
+    color: #4a4a4a;
+}
+
+.ml-a {
+    height: 40px;
+    padding: 0 32px;
+    display: inline-block;
+    line-height: 40px;
+    text-decoration: none;
+    color: #0468d7;
+    border: 1px solid #0468d7;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.mr-img {
+    max-width: 600px;
+    width: 100%;
+}
+
+.muti-c-re {
+    grid-template-columns: 40% 1fr;
+}
+
+.muti-left-re {
+    grid-row: 1/2;
+    grid-column: 2/3;
+    padding: 0 50px 0 140px;
+}
+
+.dev-contains {
+    width: 70vw;
+    margin: 70px auto;
+    background: linear-gradient(45deg, #ff8485, #f9eac6);
+    min-height: 315px;
+    border-radius: 40px;
+    display: grid;
+    grid-template-columns: 1fr minmax(0,441px);
+    position: relative;
+}
+
+.dc-left {
+    padding: 64px 0 64px 64px;
+}
+
+.dc-p {
+    font-size: 36px;
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: #000;
+}
+
+.dc-more-a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.dc-right-img {
+    height: 385px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.dc-h2 {
+    margin: 0;
+    font-size: 20px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #000;
+    line-height: 1.2;
+    letter-spacing: -.005rem;
+}
+
+
+.community-contains {
+    width: 70vw;
+    height: 900px;
+    margin: 0 auto;
+    padding-top: 98px;
+}
+
+.cc-pic-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cc-pic {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 356px 1fr 1fr 1fr;
+    gap: 24px;
+    position: relative;
+}
+
+.cc-item {
+    position: relative;
+}
+
+
+.cc-item-box {
+    width: 163px;
+    height: 163px;
+    padding: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 16px #0000001a;
+    margin-bottom: 24px;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+
+.cc-item-box-img {
+    height: auto;
+    max-width: 100%;
+}
+
+.cc-item-plus {
+    top: -48px;
+}
+
+.cc-item-div {
+    top: 60px;
+}
+.cc-item-middle {
+    & > div {
+        width: 356px;
+        height: 356px;
+    }
+}
+
+.cc-text {
+    text-align: center;
+    position: relative;
+    top: -195px;
+}
+
+.cc-text-tip-title {
+    font-size: 20px;
+    margin: 0;
+    margin-bottom: 20px;
+    color: #4a4a4a;
+    font-weight: 700;
+    letter-spacing: -.005rem;
+    line-height: 1.2;
+}
+
+.cc-text-title {
+    font-size: 60px;
+    line-height: 1;
+    color: #000;
+    letter-spacing: -.005rem;
+    margin: 0;
+    margin-bottom: 40px;
+}
+
+.cc-text-sub-p {
+    font-size: 20px;
+    max-width: 500px;
+    margin: 0 auto 30px;
+    color: #4a4a4a;
+    line-height: 1.4;
+}
+
+
+.cc-text-suc-a {
+    height: 40px;
+    padding: 0 32px;
+    display: inline-block;
+    line-height: 40px;
+    text-decoration: none;
+    color: #0468d7;
+    border: 1px solid #0468d7;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.cc-text-join-a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 24px;
+}
+
 </style>
