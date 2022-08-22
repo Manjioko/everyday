@@ -9,6 +9,7 @@ import Angular from '../views/AngularPage.vue'
 import test from '../views/test.vue'
 import Node from '../views/NodePage.vue'
 import Flutter from '../views/FlutterPage.vue'
+import Dart from '../views/DartPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -68,6 +69,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/flutter',
     name: 'flutter',
     component: Flutter
+  },
+  {
+    path: '/dart',
+    name: 'dart',
+    component: Dart
   },
 ]
 
