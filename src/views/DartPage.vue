@@ -193,6 +193,21 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
     padding-top: 20px;
+    width: 150px;
+    margin: 0 auto;
+}
+
+.opt-watch-video:hover {
+
+    & > div {
+       background-color: #168fc5;
+       transition: background-color 0.3s ease;
+    }
+
+    & > p {
+       color: #168fc5;
+       transition: color 0.3s ease;
+    }
 }
 
 .opt-cycle {
@@ -252,5 +267,11 @@ export default defineComponent({
 
 .opt-sub-img {
     width: 1rem;
+    opacity: 0.5;
+}
+
+.opt-sub-img:hover {
+    opacity: 1;
+    transition: opacity 0.3 ease;
 }
 </style>
