@@ -37,6 +37,28 @@
             </video>
         </article>
     </section>
+
+    <!-- 客户端优化 -->
+    <section class="optimized">
+        <article class="opt-contains">
+            <div class="opt-title">Dart is a client-optimized language for fast apps on any platform</div>
+            <div class="opt-watch-video">
+                <div class="opt-cycle">
+                    <div class="opt-tip"></div>
+                </div>
+                <p class="opt-w-v-p">Watch video</p>
+            </div>
+            <div class="opt-logo">
+                <img src="../assets/DartAssets/supported_by_google.png" alt="" class="opt-logo-img">
+            </div>
+            <div class="opt-sub">
+                <p class="opt-sub-p">Dart is free and open source</p>
+                <span class="opt-sub-span">
+                    <img src="../assets/github-light.svg" alt="" class="opt-sub-img">
+                </span>
+            </div>
+        </article>
+    </section>
   </main>
 </template>
 
@@ -67,10 +89,15 @@ export default defineComponent({
     background-color: #1C2834;
     color: #FFF;
     align-items: center;
-    position: sticky;
-    top: 0;
+    // position: sticky;
+    // top: 0;
 }
 
+.dart-header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
 
 .dh-nav-left {
     flex: 1;
@@ -148,5 +175,82 @@ export default defineComponent({
 
 .dv-video {
     max-width: 1330px;
+}
+
+.opt-contains {
+    text-align: center;
+    padding: 64px 0;
+    background-color: #121a26;
+}
+
+.opt-title {
+    font-size: 28px;
+    color: #fff;
+}
+
+.opt-watch-video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.opt-cycle {
+    background-color: #40c4ff;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.opt-tip {
+    width: 0;
+    height: 0;
+    border-bottom: 5px solid transparent;
+    border-right: 6px solid transparent;
+    border-left: 6px solid #000;
+    border-top: 5px solid transparent;
+    margin-left: 9px;
+}
+
+.opt-w-v-p {
+    margin: 0;
+    padding-left: 10px;
+    color: #40c4ff;
+    line-height: 27px;
+    height: 24px;
+}
+
+.opt-logo {
+    padding-top: 30px;
+}
+
+.opt-logo-img {
+    width: 180px;
+    opacity: 0.5;
+}
+
+.opt-sub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 20px;
+    color: #82878c;
+    margin-top: 16px;
+}
+
+.opt-sub-p {
+    margin: 0;
+}
+
+.opt-sub-span {
+    margin-left: 10px;
+    height: 20px;
+}
+
+.opt-sub-img {
+    width: 1rem;
 }
 </style>
