@@ -195,6 +195,7 @@ export default defineComponent({
     padding-top: 20px;
     width: 150px;
     margin: 0 auto;
+    cursor: pointer;
 }
 
 .opt-watch-video:hover {
@@ -268,6 +269,7 @@ export default defineComponent({
 .opt-sub-img {
     width: 1rem;
     opacity: 0.5;
+    cursor: pointer;
 }
 
 .opt-sub-img:hover {
