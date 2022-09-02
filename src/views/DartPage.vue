@@ -59,6 +59,23 @@
             </div>
         </article>
     </section>
+
+    <!-- Feature -->
+    <section class="feature">
+        <article class="feature-contains">
+            <div class="fc-box" v-for="(item, index) in featureBox" :key="index">
+                <div class="fc-box-logo">
+                    <img :src="item.url" alt="" class="fc-box-logo-img">
+                </div>
+                <h1 class="fc-box-h1">
+                    {{item.title}}
+                    <br>
+                    {{item.titleNext}}
+                </h1>
+                <p class="fc-box-p">{{item.sub}}</p>
+            </div>
+        </article>
+    </section>
   </main>
 </template>
 
@@ -74,7 +91,27 @@ export default defineComponent({
 
 
     return {
-        navBox: ['Overview','Docs','Community','Try Dart','Get Dart']
+        navBox: ['Overview','Docs','Community','Try Dart','Get Dart'],
+        featureBox: [
+            { 
+                title: 'Optimized',
+                titleNext: 'for UI',
+                url: 'https://dart.dev/assets/dash/2x/multiplatform%20performance%20light%20op1@2x.png',
+                sub: 'Develop with a programming language specialized around the needs of user interface creation'
+            },
+            { 
+                title: 'Productive',
+                titleNext: 'development',
+                url: 'https://dart.dev/assets/dash/2x/client%20optimised%20light%20op1@2x.png',
+                sub: 'Make changes iteratively: use hot reload to see the result instantly in your running app'
+            },
+            { 
+                title: 'Fast on all',
+                titleNext: 'platforms',
+                url: 'https://dart.dev/assets/dash/2x/productive%20dev%20light%20op1@2x.png',
+                sub: 'Compile to ARM & x64 machine code for mobile, desktop, and backend. Or compile to JavaScript for the web'
+            },
+        ]
     }
   }
 });
@@ -276,4 +313,53 @@ export default defineComponent({
     opacity: 1;
     transition: opacity 0.3 ease;
 }
+
+.feature-contains {
+    // background-color: #0d1520;
+    padding-top: 50px;
+    padding-bottom: 80px;
+    display: flex;
+    color: #fff;
+    justify-content: space-around;
+    max-width: 100%;
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.fc-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 325px;
+    flex-shrink: 0;
+}
+
+.fc-box-logo-img {
+    width: 80px;
+    height: 80px;
+}
+
+.fc-box-h1 {
+    font-size: 28px;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    color: #f8f9fa;
+    font-weight: 300;
+    line-height: 33px;
+}
+
+.fc-box-p {
+    text-align: center;
+    font-size: 16px;
+    color: #82878c;
+    line-height: 20px;
+}
+
+
+.feature {
+    background-color: #0d1520;
+}
+
+
 </style>
