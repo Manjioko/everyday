@@ -76,18 +76,123 @@
             </div>
         </article>
     </section>
+
+    <!-- Descript -->
+    <section class="descript">
+        <article class="des-contains">
+            <div class="des-left">
+                <div class="left-box">
+                    <img src="https://dart.dev/assets/dash/2x/multiplatform%20performance%20light%20op1@2x.png" alt="" class="des-left-img">
+                    <h1 class="des-left-h1">Optimized for UI</h1>
+                    <div class="des-left-btn">
+                        <ul class="des-left-ul">
+                            <li class="des-left-li" @mouseenter="colorListHandle">
+                                <div class="des-left-btn-div"></div>
+                                <p class="des-left-p">
+                                    Mature and complete <a href="" class="des-left-a">async-await</a> for user interfaces containing event-driven code, 
+                                    paired with <a href="" class="des-left-a">isolate-based concurrency</a>
+                                </p>
+                            </li>
+                            <li class="des-left-li" @mouseenter="colorListHandle">
+                                <div class="des-left-btn-div"></div>
+                                <p class="des-left-p">
+                                    A programming language optimized for building user interfaces with features such as <a href="" class="des-left-a">sound null safety</a>, 
+                                    the <a href="" class="des-left-a">spread operator</a> for expanding collections, and <a href="" class="des-left-a">collection if</a> 
+                                    for customizing UI for each platform
+                                </p>
+                            </li>
+                            <li class="des-left-li" @mouseenter="colorListHandle">
+                                <div class="des-left-btn-div"></div>
+                                <p class="des-left-p">
+                                    A programming language that is easy to learn, with a <a href="" class="des-left-a">familiar syntax</a>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="des-right">
+                <img src="https://dart.dev/assets/dash/svg/1-3%20familiar%20syntax.svg" alt="" class="des-right-img">
+            </div>
+        </article>
+    </section>
+
+    <!-- code -->
+    <section class="code">
+        <article class="code-contains">
+            <div class="code-title">
+                <h1 class="code-title-h1">Try Dart in your browser</h1>
+                <select name="code" id="select">
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="hamster">Hamster</option>
+                    <option value="parrot">Parrot</option>
+                    <option value="spider">Spider</option>
+                    <option value="goldfish">Goldfish</option>
+                </select>
+            </div>
+            <div class="code-layout">
+                <div class="code-layout-nav">
+                    <span class="code-layout-nav-left">Dart</span>
+                    <div class="code-layout-nav-right">
+                        <span class="clnr-btn">install SDK</span>
+                        <span class="clnr-btn">Format</span>
+                        <span class="clnr-btn">Reset</span>
+                        <span class="clnr-click">
+                            <div class="clnr-c-ret"></div>
+                            Run
+                        </span>
+                        <div class="clnr-dot">
+                            <span class="clnr-click-dot">.</span>
+                            <span class="clnr-click-dot">.</span>
+                            <span class="clnr-click-dot">.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="code-layout-content">
+                    <div class="clc-left">
+                        <pre class="pre">
+                            <code class="code">
+ <span class="clc-num">1</span> void<span class="mainColor"> main</span>() {
+ <span class="clc-num">2</span>     <span class="mainColor">print</span>(<span class="stringColor">"hello world"</span>);
+ <span class="clc-num">3</span> }
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="clc-right">
+                        <span class="clc-right-console">Console</span>
+                        <span class="clc-right-issue">no issues</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
   </main>
 </template>
 
 <script lang="ts">
-import { defineComponent, } from 'vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'dartPage',
 
   setup() {
 
-    // let xhr = new XMLHttpRequest()
+    function colorListHandle(e:MouseEvent) {
+                        
+        const target = e.target as Element;
+        const parentList = target.parentElement?.children;
+
+        if(parentList?.length) {
+            for(let item of parentList) {
+                if(target !== item) {
+                    item.classList.remove("active")
+                } else {
+                    item.classList.add("active")
+                }
+            }
+        }
+    }
 
 
     return {
@@ -111,7 +216,8 @@ export default defineComponent({
                 url: 'https://dart.dev/assets/dash/2x/productive%20dev%20light%20op1@2x.png',
                 sub: 'Compile to ARM & x64 machine code for mobile, desktop, and backend. Or compile to JavaScript for the web'
             },
-        ]
+        ],
+        colorListHandle
     }
   }
 });
@@ -361,5 +467,257 @@ export default defineComponent({
     background-color: #0d1520;
 }
 
+.des-contains {
+    display: grid;
+    grid-template-columns: 0.7fr 1fr;
+    background-color: #0d1520;
+}
+
+.des-left {
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.left-box {
+    padding: 24px;
+    max-width: 512px;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.des-left-img {
+    width: 68px;
+}
+
+.des-left-h1 {
+    font-size: 43px;
+    margin-top: 18px;
+    margin-bottom: 34px;
+    line-height: 1.2;
+    color: #4a4a4a;
+}
+
+.des-left-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.des-left-li {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 10px;
+    font-size: 17px;
+    // cursor: pointer;
+}
+
+.active {
+    color: #1967d2;
+    & > .des-left-btn-div{
+        background-color: #1967d2;
+        height: 25px;
+        transition: height .6s ease
+    };
+
+    & a {
+        color: #1967d2;
+    };
+}
+
+.des-left-btn-div {
+    width: 5px;
+    height: 10px;
+    background-color: #0d1520;
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.des-left-p {
+    margin: 0;
+    margin-left: 20px;
+}
+
+.des-left-a {
+    color: #4a4a4a;
+    font-weight: 600;
+}
+
+.des-right {
+    display: flex;
+    align-items: center;
+}
+
+.des-right {
+    display: flex;
+    align-items: center;
+}
+
+.des-right-img {
+    max-height: 640px;
+    display: block;
+}
+
+.code-contains {
+    text-align: center;
+    background-color: #121a26;
+    padding: 32px;
+}
+.code-title {
+    color: #fff;
+}
+
+.code-layout {
+    border: 1px solid #293542;
+    // max-width: 90vw;
+    // margin: 0 auto;
+}
+.code-layout-nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(14, 22, 31);
+    color: rgb(248, 249, 250);
+    align-items: center;
+    height: 50px;
+    box-sizing: border-box;
+}
+
+.code-layout-nav-left {
+    box-sizing: border-box;
+    padding-left: 5px;
+    width: 90px;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 3px solid #fff;
+}
+
+.code-layout-nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.clnr-btn {
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.clnr-click {
+    background-color: #168afd;
+    width: 100px;
+    height: 36px;
+    line-height: 36px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 20px;
+    margin-left: 15px;
+    user-select: none;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clnr-c-ret {
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-left: 9px solid #000;
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid transparent;
+    margin-right: 8px;
+}
+
+.clnr-dot {
+    display: flex;
+    flex-direction: column;
+    margin-right: 35px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.clnr-click-dot {
+    width: 10px;
+    height: 6px;
+    line-height: 0;
+    transform: scale(2);
+}
+
+.code-title-h1 {
+    font-size: 43px;
+    margin: 2rem 0;
+    font-weight: 500;
+}
+
+#select {
+    width: 170px;
+    height: 25px;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+
+.code-layout-content {
+    display: flex;
+    border-top: 3px solid #293542;
+}
+
+.clc-left {
+    width: 65%;
+    height: 500px;
+    background: #0e161f;
+    border-right: 5px solid #293542;
+    text-align: start;
+    color: #fff;
+}
+
+.clc-right {
+    // height: 200px;
+    background: #0e161f;
+    flex-grow: 1;
+    text-align: start;
+    position: relative;
+}
+
+.clc-num {
+    font-size: 18px;
+    opacity: 0.5;
+}
+
+.mainColor {
+    color: rgb(0, 210, 250);
+}
+
+.code {
+    font-size: 17px;
+}
+
+.pre {
+    margin: 0;
+    // line-height: 1.6rem;
+}
+
+.stringColor {
+    color: #f16767;
+}
+
+.clc-right-console {
+    color: #fff;
+    font-size: 14px;
+    display: inline-block;
+    padding: 7px;
+    opacity: 0.5;
+}
+
+.clc-right-issue {
+    color: #fff;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    font-weight: 500;
+    font-size: 15px;
+}
 
 </style>
