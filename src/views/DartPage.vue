@@ -165,9 +165,56 @@
                     </div>
                 </div>
             </div>
+
+            <div class="code-bottom-title">
+                <h1 class="code-bottom-title">
+                    Want more practice? 
+                    <a href="" class="cbt-a">Try a codelab</a>.
+                    Or <a href="" class="cbt-a">download Dart</a>.
+                </h1>
+            </div>
         </article>
     </section>
   </main>
+
+  <footer class="footer">
+    <section class="footer-sec">
+        <article class="footer-contains">
+            <div class="footer-logo">
+                <div class="fl-logo">
+                    <img src="https://dart.dev/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="" class="fl-logo-img">
+                    <!-- <p class="fl-logo-p">Dart</p> -->
+                </div>
+                <div class="fl-another-logo">
+                    <ul class="fl-a-l-ul">
+                        <li class="fl-a-l-li">
+                            <img src="../assets/youtube.svg" alt="" class="fl-a-l-svg" />
+                        </li>
+                        <li class="fl-a-l-li">
+                            <img src="../assets/github-light.svg" alt="" class="fl-a-l-svg" />
+                        </li>
+                        <li class="fl-a-l-li">
+                            <img src="../assets/twitter.svg" alt="" class="fl-a-l-svg" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-sub">
+                <p class="footer-sub-p">
+                    Except as otherwise noted, this site is licensed under a Creative 
+                    Commons Attribution 4.0 International License, and code samples 
+                    are licensed under the 3-Clause BSD License.
+                </p>
+                <ul class="footer-sub-ul">
+                    <li class="footer-sub-li">Terms</li>
+                    <li class="footer-sub-li">Privacy</li>
+                    <li class="footer-sub-li">Security</li>
+                </ul>
+            </div>
+        </article>
+    </section>
+  </footer>
 </template>
 
 <script lang="ts">
@@ -572,6 +619,7 @@ export default defineComponent({
 
 .code-layout {
     border: 1px solid #293542;
+    box-shadow: 0 0 3px #293542;
     // max-width: 90vw;
     // margin: 0 auto;
 }
@@ -718,6 +766,73 @@ export default defineComponent({
     bottom: 10px;
     font-weight: 500;
     font-size: 15px;
+}
+
+.code-bottom-title {
+    margin-bottom: 48px;
+}
+
+.code-bottom-title {
+    color: #fff;
+    font-size: 21px;
+    margin-top: 32px;
+}
+
+.cbt-a {
+    color: #40C4FF;
+}
+
+
+.footer-contains {
+    background-color: #1C2834;
+    padding: 32px;
+    box-sizing: border-box;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #82878c;
+}
+
+.fl-logo-img {
+    width: 164px;
+}
+
+.fl-a-l-ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.fl-a-l-svg {
+    width: 32px;
+    margin-left: 32px;
+}
+
+.footer-sub {
+    display: flex;
+    color: #fff;
+    font-size: 14px;
+    justify-content: space-between;
+}
+
+.footer-sub-p {
+    width: 60%;
+}
+
+.footer-sub-ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+
+.footer-sub-li {
+    margin-left: 24px;
+    cursor: pointer;
 }
 
 </style>
